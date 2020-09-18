@@ -1,47 +1,64 @@
-.btn{
-  border: none;
-  &:hover{
-  background-color: rgba(52, 58, 64, 0.5);
-  border-color: rgba(52, 58, 64, 0.5);
-  transition: background-color 0.4s;
-  }
+.btn
+{
+    border: none;
+    &:hover
+    {
+        transition: background-color .4s;
+
+        border-color: rgba(52, 58, 64, .5);
+        background-color: rgba(52, 58, 64, .5);
+    }
 }
 
-.btn:nth-of-type(2){
-  opacity: 0;
-  height: 50%;
-  align-self: center;
-  font-size: 60px;
-  &:hover{
-    opacity: 0.6;
-    transition: opacity 0.4s;
-  }
+.btn:nth-of-type(2)
+{
+    font-size: 60px;
+
+    height: 50%;
+
+    opacity: 0;
+
+    align-self: center;
+    &:hover
+    {
+        transition: opacity .4s;
+
+        opacity: .6;
+    }
 }
 
 .btn-outline-dark:not(:disabled):not(.disabled).active:focus,
 .btn-outline-dark:not(:disabled):not(.disabled):active:focus,
-.show>.btn-outline-dark.dropdown-toggle:focus{
-  box-shadow: none;
+.show > .btn-outline-dark.dropdown-toggle:focus
+{
+    box-shadow: none;
 }
-.btn-outline-dark.focus, .btn-outline-dark:focus,
-.btn.focus, .btn:focus{
-  box-shadow: none;
+.btn-outline-dark.focus,
+.btn-outline-dark:focus,
+.btn.focus,
+.btn:focus
+{
+    box-shadow: none;
 }
 .btn-outline-dark:nth-child(2):not(:disabled):not(.disabled).active,
 .btn-outline-dark:nth-child(2):not(:disabled):not(.disabled):active,
-.show>.btn-outline-dark.dropdown-toggle{
-  background-color: transparent;
+.show > .btn-outline-dark.dropdown-toggle
+{
+    background-color: transparent;
 }
 
-.btn-outline-dark:nth-child(2):hover{
-  background-color: transparent;
+.btn-outline-dark:nth-child(2):hover
+{
+    background-color: transparent;
 }
 
-.fas{
-  font-size: 40px;
+.fas
+{
+    font-size: 40px;
 }
 
 .fa-play,
-.fa-pause{
-  font-size: 50px;
+.fa-pause
+{
+    font-size: 50px;
 }

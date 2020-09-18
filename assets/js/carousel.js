@@ -1,13 +1,16 @@
 const container = document.querySelector('.slides')
-let slides = container.querySelectorAll('.slide')
+const slides = container.querySelectorAll('.slide')
 let currentSlide = 0;
 let slideInterval = setInterval(nextSlide, 2000);
 let isPlaying = true;
 const pauseButton = document.querySelector('#pause');
 const nextButton = document.querySelector('#next');
 const prevButton = document.querySelector('#prev');
-let indicatorsContainer = document.querySelector('#indicators-container');
-let indicators = indicatorsContainer.querySelectorAll('.indicator');
+const indicatorsContainer = document.querySelector('#indicators-container');
+const indicators = indicatorsContainer.querySelectorAll('.indicator');
+const SPACE = ' ';
+const LEFT_ARROW = 'ArrowLeft';
+const RIGHT_ARROW = 'ArrowRight';
 
 function goToSlide (n) {
     slides[currentSlide].classList.toggle('active');
@@ -37,15 +40,14 @@ function playSlideShow (){
     slideInterval =  setInterval(nextSlide, 2000);
 }
 
-pauseButton.addEventListener('click', () => {
-    console.log(pauseButton);
+function playPause(){
     if(isPlaying) {
         pauseSlideShow();
     }
     else {
         playSlideShow();
     }
-});
+}
 
 function indicate(event){
     let target = event.target;
@@ -54,8 +56,22 @@ function indicate(event){
         goToSlide(+target.getAttribute('data-slide-to'));
     }
 }
-indicatorsContainer.addEventListener('click', indicate);
 
+function pressKey(event){
+    if(event.key === LEFT_ARROW) {
+        prevSlide();
+        pauseSlideShow()
+    }
+    if (event.key === RIGHT_ARROW){
+        nextSlide();
+        pauseSlideShow()
+    }
+    if (event.key === SPACE){
+        playPause();
+    }
+}
+pauseButton.addEventListener('click', playPause);
+indicatorsContainer.addEventListener('click', indicate);
 nextButton.addEventListener('click', () => {
     nextSlide();
     pauseSlideShow();
@@ -64,3 +80,4 @@ prevButton.addEventListener('click', () => {
     prevSlide();
     pauseSlideShow();
 })
+document.addEventListener('keydown', pressKey);
