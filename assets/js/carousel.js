@@ -26,13 +26,13 @@ function prevSlide() {
 }
 
 function pauseSlideShow () {
-    pauseButton.innerHTML = 'Play';
+    pauseButton.innerHTML = '<i class="fas fa-play"></i>';
     isPlaying = false;
     clearInterval(slideInterval);
 }
 
 function playSlideShow (){
-    pauseButton.innerHTML = 'Pause';
+    pauseButton.innerHTML = '<i class="fas fa-pause"></i>';
     isPlaying = true;
     slideInterval =  setInterval(nextSlide, 2000);
 }

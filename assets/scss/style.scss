@@ -2,7 +2,7 @@
 @import "variables";
 @import "mixins-media";
 
-// @import "commons";
+ @import "commons";
 // @import "slides";
 // @import "controls";
 // @import "indicators";
@@ -17,26 +17,25 @@ html {
 
 body {
   margin: 0;
-  //width: 100%;
-  //height: 100%;
 }
 
+.carousel{
+  position: relative;
+  height: 100vh;
+}
 .control-buttons{
   display: flex;
-  position: absolute;
-  top: 0;
+  height: 100%;
   justify-content: space-between;
   z-index: 4;
 }
 .controls {
-  //position: absolute;
-  //z-index: 3;
-  top: 0;
+  z-index: 3;
 }
 
 .indicators {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   top: 8%;
   display: flex;
   width: 100%;
@@ -51,8 +50,7 @@ body {
   width: 20px;
   height: 20px;
   margin: -40px 7.5px 0;
-  opacity: 0.4;
-
+  opacity: 0.3;
   border: 3px solid white;
   border-radius: 50%;
   outline: none;
