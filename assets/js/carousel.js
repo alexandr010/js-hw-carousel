@@ -3,14 +3,16 @@ const slides = container.querySelectorAll('.slide')
 let currentSlide = 0;
 let slideInterval = setInterval(nextSlide, 2000);
 let isPlaying = true;
-const pauseButton = document.querySelector('#pause');
-const nextButton = document.querySelector('#next');
-const prevButton = document.querySelector('#prev');
+const pauseButton = container.querySelector('#pause');
+const nextButton = container.querySelector('#next');
+const prevButton = container.querySelector('#prev');
 const indicatorsContainer = document.querySelector('#indicators-container');
 const indicators = indicatorsContainer.querySelectorAll('.indicator');
 const SPACE = ' ';
 const LEFT_ARROW = 'ArrowLeft';
 const RIGHT_ARROW = 'ArrowRight';
+let swipeStartX = null;
+let swipeEndX = null;
 
 function goToSlide (n) {
     slides[currentSlide].classList.toggle('active');
@@ -70,6 +72,25 @@ function pressKey(event){
         playPause();
     }
 }
+
+function swipeStart(e){
+    swipeStartX = e.changedTouches[0].pageX;
+    console.log(swipeStartX);
+}
+
+function swipeEnd(e){
+    swipeEndX = e.changedTouches[0].pageX;
+    if (swipeStartX - swipeEndX > 100) {
+        nextSlide();
+        pauseSlideShow()
+    }
+    if (swipeStartX - swipeEndX < -100){
+        prevSlide();
+        pauseSlideShow()
+    }
+    console.log(swipeStartX);
+}
+
 pauseButton.addEventListener('click', playPause);
 indicatorsContainer.addEventListener('click', indicate);
 nextButton.addEventListener('click', () => {
@@ -81,3 +102,5 @@ prevButton.addEventListener('click', () => {
     pauseSlideShow();
 })
 document.addEventListener('keydown', pressKey);
+document.addEventListener('touchstart', swipeStart);
+document.addEventListener('touchend', swipeEnd);
