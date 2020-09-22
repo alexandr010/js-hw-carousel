@@ -110,12 +110,10 @@ class Carousel{
         this.nextButton.addEventListener('click', () => {
             this.next();
         })
-        this.prevButton.addEventListener('click', () => {
+        this.prevButton.addEventListener('click', (e) => {
             this.prev();
         })
-        this.container.addEventListener('keydown', (e) => {
-            this.pressKey(e);
-        });
+        document.addEventListener('keydown', this.pressKey.bind(this));
         this.container.addEventListener('touchstart', (e) => {
             this.swipeStart(e);
         });
