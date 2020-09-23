@@ -75,7 +75,7 @@ class Carousel{
     }
 
     pressKey(event){
-        if(event.key === this.LEFT_ARROW) {
+        if (event.key === this.LEFT_ARROW) {
             this.prev();
         }
         if (event.key === this.RIGHT_ARROW){
@@ -110,10 +110,13 @@ class Carousel{
         this.nextButton.addEventListener('click', () => {
             this.next();
         })
-        this.prevButton.addEventListener('click', (e) => {
+        this.prevButton.addEventListener('click', () => {
             this.prev();
         })
-        document.addEventListener('keydown', this.pressKey.bind(this));
+        document.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            this.pressKey(e)
+        });
         this.container.addEventListener('touchstart', (e) => {
             this.swipeStart(e);
         });
